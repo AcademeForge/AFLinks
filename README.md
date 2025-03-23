@@ -76,6 +76,23 @@
             transform: scale(1.1);
         }
 
+        .back-button {
+            background: #ff5252;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #ff1744;
+            transform: scale(1.1);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -107,12 +124,14 @@
     <div class="option" onclick="selectStream('Science')">Science</div>
     <div class="option" onclick="selectStream('Commerce')">Commerce</div>
     <div class="option" onclick="selectStream('Arts')">Arts</div>
+    <button class="back-button" onclick="goBack('streamContainer', 'classContainer')">Back</button>
 </div>
 
 <!-- Subject Selection -->
 <div class="container hidden" id="subjectContainer">
     <h2>Subjects</h2>
     <div id="subjectsList"></div>
+    <button class="back-button" onclick="goBack('subjectContainer', selectedClass > 10 ? 'streamContainer' : 'classContainer')">Back</button>
 </div>
 
 <script>
@@ -120,17 +139,25 @@
     let selectedStream = null;
 
     const subjectLinks = {
+        1: { "Math": "#", "English": "#", "Hindi": "#" },
+        2: { "Math": "#", "English": "#", "Hindi": "#" },
+        3: { "Math": "#", "English": "#", "Hindi": "#" },
+        4: { "Math": "#", "English": "#", "Hindi": "#" },
+        5: { "Math": "#", "English": "#", "Hindi": "#" },
+        6: { "Science": "#", "Math": "#", "English": "#", "Hindi": "#" },
+        7: { "Science": "#", "Math": "#", "English": "#", "Hindi": "#" },
+        8: { "Science": "#", "Math": "#", "Social Science": "#", "English": "#", "Hindi": "#" },
         9: { "Science": "#", "Math": "#", "Social Science": "#", "English": "#", "Hindi": "#" },
         10: { "Science": "#", "Math": "#", "Social Science": "#", "English": "#", "Hindi": "#" },
         11: {
             "Science": { "Physics": "#", "Chemistry": "#", "Math": "#", "Biology": "#" },
             "Commerce": { "Business Studies": "#", "Accountancy": "#", "Economics": "#" },
-            "Arts": { "History": "#", "Political Science": "#", "Economics": "#", "Psychology": "#", "Geography": "#" }
+            "Arts": { "History": "#", "Political Science": "#", "Geography": "#", "Psychology": "#" }
         },
         12: {
             "Science": { "Physics": "#", "Chemistry": "#", "Math": "#", "Biology": "#" },
             "Commerce": { "Business Studies": "#", "Accountancy": "#", "Economics": "#" },
-            "Arts": { "History": "#", "Political Science": "#", "Economics": "#", "Psychology": "#", "Geography": "#" }
+            "Arts": { "History": "#", "Political Science": "#", "Geography": "#", "Psychology": "#" }
         }
     };
 
@@ -154,27 +181,23 @@
         const subjectsList = document.getElementById("subjectsList");
         subjectsList.innerHTML = '';
 
-        if (cls <= 10) {
-            for (const [subject, link] of Object.entries(subjectLinks[cls])) {
-                subjectsList.innerHTML += `
-                    <div class="option">
-                        ${subject}
-                        <button class="access-button" onclick="window.open('${link}', '_blank')">Access Notes</button>
-                    </div>
-                `;
-            }
-        } else {
-            for (const [subject, link] of Object.entries(subjectLinks[cls][selectedStream])) {
-                subjectsList.innerHTML += `
-                    <div class="option">
-                        ${subject}
-                        <button class="access-button" onclick="window.open('${link}', '_blank')">Access Notes</button>
-                    </div>
-                `;
-            }
+        let subjects = cls <= 10 ? subjectLinks[cls] : subjectLinks[cls][selectedStream];
+
+        for (const [subject, link] of Object.entries(subjects)) {
+            subjectsList.innerHTML += `
+                <div class="option">
+                    ${subject}
+                    <button class="access-button" onclick="window.open('${link}', '_blank')">Access Notes</button>
+                </div>
+            `;
         }
 
         document.getElementById("subjectContainer").classList.remove("hidden");
+    }
+
+    function goBack(current, previous) {
+        document.getElementById(current).classList.add("hidden");
+        document.getElementById(previous).classList.remove("hidden");
     }
 </script>
 
