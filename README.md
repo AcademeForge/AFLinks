@@ -2,233 +2,181 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AcademeForge - Mobile Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademeForge - Class Selection</title>
     <style>
-        /* Root Variables for Colors & Effects */
-        :root {
-            --bg-gradient: linear-gradient(135deg, #007bff, #6610f2);
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --button-color: #ff5722;
-            --button-hover: #e64a19;
-            --text-color: #fff;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            --transition: 0.3s;
-        }
-
-        /* General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            background: var(--bg-gradient);
-            color: var(--text-color);
+            flex-direction: column;
             text-align: center;
-            overflow: hidden;
         }
 
         .container {
             width: 90%;
             max-width: 400px;
-            background: var(--card-bg);
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            transform: scale(0.9);
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         h2 {
-            font-size: 1.5em;
             margin-bottom: 15px;
-            color: #333;
+            font-size: 22px;
         }
 
         .option {
-            background: var(--button-color);
-            color: white;
+            background: #1e1e1e;
             padding: 12px;
             margin: 10px 0;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.1em;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .option::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(0);
-            transition: var(--transition);
-            border-radius: 50%;
-        }
-
-        .option:hover::after {
-            transform: scale(3);
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
         }
 
         .option:hover {
-            background: var(--button-hover);
+            background: #292929;
             transform: scale(1.05);
         }
 
+        .hidden {
+            display: none;
+        }
+
         .access-button {
-            background: #28a745;
+            background: #00c853;
             color: white;
+            border: none;
             padding: 8px 12px;
             border-radius: 5px;
-            font-size: 0.9em;
+            cursor: pointer;
+            font-size: 14px;
             margin-top: 5px;
-            display: block;
-            text-decoration: none;
-            transition: var(--transition);
+            transition: 0.3s;
         }
 
         .access-button:hover {
-            background: #218838;
+            background: #00e676;
+            transform: scale(1.1);
         }
 
-        #backButton {
-            background: #333;
-            color: white;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none;
-            font-size: 0.9em;
-            transition: var(--transition);
-        }
-
-        #backButton:hover {
-            background: #444;
-        }
-
-        /* Animation */
         @keyframes fadeIn {
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Mobile-Only Optimization */
-        @media (min-width: 768px) {
-            body {
-                display: none;
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Class Selection -->
-    <div class="container" id="classContainer">
-        <h2>Select Your Class</h2>
-        <div class="option" onclick="selectClass(1)">Class 1</div>
-        <div class="option" onclick="selectClass(2)">Class 2</div>
-        <div class="option" onclick="selectClass(3)">Class 3</div>
-        <div class="option" onclick="selectClass(4)">Class 4</div>
-        <div class="option" onclick="selectClass(5)">Class 5</div>
-        <div class="option" onclick="selectClass(6)">Class 6</div>
-        <div class="option" onclick="selectClass(7)">Class 7</div>
-        <div class="option" onclick="selectClass(8)">Class 8</div>
-        <div class="option" onclick="selectClass(9)">Class 9</div>
-        <div class="option" onclick="selectClass(10)">Class 10</div>
-        <div class="option" onclick="selectClass(11)">Class 11</div>
-        <div class="option" onclick="selectClass(12)">Class 12</div>
-    </div>
+<!-- Class Selection -->
+<div class="container" id="classContainer">
+    <h2>Select Your Class</h2>
+    <div class="option" onclick="selectClass(1)">Class 1</div>
+    <div class="option" onclick="selectClass(2)">Class 2</div>
+    <div class="option" onclick="selectClass(3)">Class 3</div>
+    <div class="option" onclick="selectClass(4)">Class 4</div>
+    <div class="option" onclick="selectClass(5)">Class 5</div>
+    <div class="option" onclick="selectClass(6)">Class 6</div>
+    <div class="option" onclick="selectClass(7)">Class 7</div>
+    <div class="option" onclick="selectClass(8)">Class 8</div>
+    <div class="option" onclick="selectClass(9)">Class 9</div>
+    <div class="option" onclick="selectClass(10)">Class 10</div>
+    <div class="option" onclick="selectClass(11)">Class 11</div>
+    <div class="option" onclick="selectClass(12)">Class 12</div>
+</div>
 
-    <!-- Stream Selection -->
-    <div class="container" id="streamContainer" style="display: none;">
-        <h2>Select Your Stream</h2>
-        <div class="option" onclick="selectStream('Science')">Science</div>
-        <div class="option" onclick="selectStream('Commerce')">Commerce</div>
-        <div class="option" onclick="selectStream('Arts')">Arts</div>
-    </div>
+<!-- Stream Selection -->
+<div class="container hidden" id="streamContainer">
+    <h2>Select Your Stream</h2>
+    <div class="option" onclick="selectStream('Science')">Science</div>
+    <div class="option" onclick="selectStream('Commerce')">Commerce</div>
+    <div class="option" onclick="selectStream('Arts')">Arts</div>
+</div>
 
-    <!-- Subjects -->
-    <div class="container" id="subjectContainer" style="display: none;">
-        <h2>Subjects</h2>
-        <div id="subjectsList"></div>
-    </div>
+<!-- Subject Selection -->
+<div class="container hidden" id="subjectContainer">
+    <h2>Subjects</h2>
+    <div id="subjectsList"></div>
+</div>
 
-    <!-- Back Button -->
-    <button id="backButton" onclick="goBack()">🔙 Back</button>
+<script>
+    let selectedClass = null;
+    let selectedStream = null;
 
-    <script>
-        let currentPage = 'class';
-        let selectedClass = null;
-        let selectedStream = null;
-
-        function showPage(page) {
-            document.getElementById(`${currentPage}Container`).style.display = 'none';
-            document.getElementById(`${page}Container`).style.display = 'block';
-            document.getElementById('backButton').style.display = (page !== 'class') ? 'block' : 'none';
-            currentPage = page;
+    const subjectLinks = {
+        9: { "Science": "#", "Math": "#", "Social Science": "#", "English": "#", "Hindi": "#" },
+        10: { "Science": "#", "Math": "#", "Social Science": "#", "English": "#", "Hindi": "#" },
+        11: {
+            "Science": { "Physics": "#", "Chemistry": "#", "Math": "#", "Biology": "#" },
+            "Commerce": { "Business Studies": "#", "Accountancy": "#", "Economics": "#" },
+            "Arts": { "History": "#", "Political Science": "#", "Economics": "#", "Psychology": "#", "Geography": "#" }
+        },
+        12: {
+            "Science": { "Physics": "#", "Chemistry": "#", "Math": "#", "Biology": "#" },
+            "Commerce": { "Business Studies": "#", "Accountancy": "#", "Economics": "#" },
+            "Arts": { "History": "#", "Political Science": "#", "Economics": "#", "Psychology": "#", "Geography": "#" }
         }
+    };
 
-        function selectClass(cls) {
-            selectedClass = cls;
-            if (cls >= 11) {
-                showPage('stream');
-            } else {
-                loadSubjects();
-            }
+    function selectClass(cls) {
+        selectedClass = cls;
+        document.getElementById("classContainer").classList.add("hidden");
+        if (cls > 10) {
+            document.getElementById("streamContainer").classList.remove("hidden");
+        } else {
+            loadSubjects(cls);
         }
+    }
 
-        function selectStream(stream) {
-            selectedStream = stream;
-            loadSubjects();
-        }
+    function selectStream(stream) {
+        selectedStream = stream;
+        document.getElementById("streamContainer").classList.add("hidden");
+        loadSubjects(selectedClass);
+    }
 
-        function loadSubjects() {
-            const subjectsList = document.getElementById('subjectsList');
-            subjectsList.innerHTML = '';
+    function loadSubjects(cls) {
+        const subjectsList = document.getElementById("subjectsList");
+        subjectsList.innerHTML = '';
 
-            let subjects = [];
-            if (selectedClass <= 10) {
-                subjects = ["Math", "Science", "Social Science", "English", "Hindi"];
-            } else if (selectedStream === "Science") {
-                subjects = ["Physics", "Chemistry", "Math", "Biology"];
-            } else if (selectedStream === "Commerce") {
-                subjects = ["Business Studies", "Accountancy", "Economics"];
-            } else if (selectedStream === "Arts") {
-                subjects = ["History", "Political Science", "Economics", "Psychology", "Geography"];
-            }
-
-            subjects.forEach(subject => {
+        if (cls <= 10) {
+            for (const [subject, link] of Object.entries(subjectLinks[cls])) {
                 subjectsList.innerHTML += `
                     <div class="option">
                         ${subject}
-                        <a href="#" class="access-button">Access to Notes</a>
+                        <button class="access-button" onclick="window.open('${link}', '_blank')">Access Notes</button>
                     </div>
                 `;
-            });
-
-            showPage('subject');
+            }
+        } else {
+            for (const [subject, link] of Object.entries(subjectLinks[cls][selectedStream])) {
+                subjectsList.innerHTML += `
+                    <div class="option">
+                        ${subject}
+                        <button class="access-button" onclick="window.open('${link}', '_blank')">Access Notes</button>
+                    </div>
+                `;
+            }
         }
 
-        function goBack() {
-            if (currentPage === 'subject') showPage(selectedClass > 10 ? 'stream' : 'class');
-            else if (currentPage === 'stream') showPage('class');
-        }
-    </script>
+        document.getElementById("subjectContainer").classList.remove("hidden");
+    }
+</script>
 
 </body>
 </html>
