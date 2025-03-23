@@ -1,112 +1,144 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AcademeForge - Select Class</title>
+    <title>AcademeForge - Mobile Portal</title>
     <style>
-        /* Root Variables */
+        /* Root Variables for Colors & Effects */
         :root {
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --card-bg: #fff;
-            --primary-color: #007bff;
-            --hover-color: #0056b3;
+            --bg-gradient: linear-gradient(135deg, #007bff, #6610f2);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --button-color: #ff5722;
+            --button-hover: #e64a19;
+            --text-color: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             --transition: 0.3s;
         }
 
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
-            background: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: var(--bg-gradient);
             color: var(--text-color);
             text-align: center;
-            margin: 0;
-            padding: 10px;
-            transition: var(--transition);
+            overflow: hidden;
         }
 
         .container {
-            display: none;
-            width: 95%;
+            width: 90%;
             max-width: 400px;
-            margin: auto;
-            padding: 15px;
             background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             transition: var(--transition);
+            transform: scale(0.9);
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
         }
 
         h2 {
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin-bottom: 15px;
+            color: #333;
         }
 
         .option {
-            background: var(--primary-color);
+            background: var(--button-color);
             color: white;
             padding: 12px;
-            margin: 8px 0;
-            border-radius: 5px;
+            margin: 10px 0;
+            border-radius: 8px;
             cursor: pointer;
-            transition: var(--transition);
             font-size: 1.1em;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        .option:hover::after {
+            transform: scale(3);
         }
 
         .option:hover {
-            background: var(--hover-color);
+            background: var(--button-hover);
+            transform: scale(1.05);
         }
 
         .access-button {
-            background: var(--hover-color);
+            background: #28a745;
             color: white;
-            padding: 8px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 5px;
+            padding: 8px 12px;
+            border-radius: 5px;
             font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
         .access-button:hover {
-            background: var(--primary-color);
+            background: #218838;
         }
 
         #backButton {
-            background: var(--primary-color);
+            background: #333;
             color: white;
             padding: 10px;
-            margin: 10px;
-            border: none;
+            margin-top: 10px;
             border-radius: 5px;
             cursor: pointer;
             display: none;
             font-size: 0.9em;
+            transition: var(--transition);
         }
 
         #backButton:hover {
-            background: var(--hover-color);
+            background: #444;
         }
 
-        /* Show Active Page */
-        .show {
-            display: block;
+        /* Animation */
+        @keyframes fadeIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* Mobile-Only Optimization */
         @media (min-width: 768px) {
             body {
-                display: none; /* Hide on non-mobile devices */
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Class Selection Page -->
-    <div class="container show" id="classContainer">
+    <!-- Class Selection -->
+    <div class="container" id="classContainer">
         <h2>Select Your Class</h2>
         <div class="option" onclick="selectClass(1)">Class 1</div>
         <div class="option" onclick="selectClass(2)">Class 2</div>
@@ -122,16 +154,16 @@
         <div class="option" onclick="selectClass(12)">Class 12</div>
     </div>
 
-    <!-- Stream Selection Page -->
-    <div class="container" id="streamContainer">
+    <!-- Stream Selection -->
+    <div class="container" id="streamContainer" style="display: none;">
         <h2>Select Your Stream</h2>
         <div class="option" onclick="selectStream('Science')">Science</div>
         <div class="option" onclick="selectStream('Commerce')">Commerce</div>
         <div class="option" onclick="selectStream('Arts')">Arts</div>
     </div>
 
-    <!-- Subjects Page -->
-    <div class="container" id="subjectContainer">
+    <!-- Subjects -->
+    <div class="container" id="subjectContainer" style="display: none;">
         <h2>Subjects</h2>
         <div id="subjectsList"></div>
     </div>
@@ -139,126 +171,64 @@
     <!-- Back Button -->
     <button id="backButton" onclick="goBack()">🔙 Back</button>
 
-<script>
+    <script>
         let currentPage = 'class';
         let selectedClass = null;
         let selectedStream = null;
 
-    // Define subject links for all classes and streams (PLACEHOLDERS)
-    const subjectLinks = {
-        9: {
-            "Science": "https://drive.google.com/drive/folders/1-CtgsAx1kXo67-UUf6HsBunPIgm8FgUl", 
-            "Math": "https://drive.google.com/drive/folders/1-DH3yoNSnF0iFSIH2CsGGf5RobYwYKyp", 
-            "Social Science": "https://drive.google.com/drive/folders/1-Dm4Tg6UIlYBiNqGYOYAWZvJExikh7my", 
-            "English": "https://drive.google.com/drive/folders/1-Gd2i8_7ylzy-gM_sFQMGrtDbiE70vRr", 
-            "Hindi": "https://drive.google.com/drive/folders/1-EHtC6OQMkNE3qEU5JgPggm5I4ggUWf9" 
-        },
-        10: {
-            "Science": "https://drive.google.com/drive/folders/1-bVnCZbCabVmNGCxJ0gY4-FP4BwN9F02", 
-            "Math": "https://drive.google.com/drive/folders/1-Z7LCbOvKhHvMxqXS3W4qVcAukPVmhXK", 
-            "Social Science": "https://drive.google.com/drive/folders/1-c9q3sV8BCZjtch0WqWnXnJWSE1il5uS", 
-            "English": "https://drive.google.com/drive/folders/1-VKypMW3rybYR_0dPrro1JscD8eGtj9u", 
-            "Hindi": "https://drive.google.com/drive/folders/1-Ud6Gv65aE25yPcul3cbprGvXZrXX2O0" 
-        },
-        11: {
-            "Science": {
-                "Physics": "https://drive.google.com/drive/folders/100rYQz_YiMNnT7zK_dxW-t8PUYj7GABP", 
-                "Chemistry": "https://drive.google.com/drive/folders/10A46iQRdTn0AJGwBfsZ4TRZ_naTsGcJ2", 
-                "Math": "https://drive.google.com/drive/folders/1-yiJhKx6TVLZQ9DlHyvQLZli8N8Qd6TB", 
-                "Biology": "https://drive.google.com/drive/folders/1-lL_2Z5_4cvklYRMSv2vTWorip9w-RWx" 
-            },
-            "Commerce": {
-                "Business Studies": "https://drive.google.com/drive/folders/10hbeBCGpwKV8AJlMLN-gkT8ROL-mPJnL", 
-                "Accountancy": "https://drive.google.com/drive/folders/10bQ9TYUr2qS3U5rerp5UMyX3qnzF1N2o", 
-                "Economics": "https://drive.google.com/drive/folders/10akiwYES3pDVQoPfTHiGJUZ_y9z7J6sx" 
-            },
-            "Arts": {
-                "History": "https://drive.google.com/drive/folders/11HZgkLXZWY391tQnU6mAkyepSHH7BnwD", 
-                "Political Science": "https://drive.google.com/drive/folders/11McG2nZBPwTOQivoYRLnuHDrCTaxZfDj", 
-                "Economics": "https://drive.google.com/drive/folders/11Mz2f1dukzNn7zqNA8FATyQuvDS3to4Z", 
-                "Psychology": "https://drive.google.com/drive/folders/11OHqx9uiW0po8Jb7EqCDOgy_hNpQa8OH", 
-                "Geography": "https://drive.google.com/drive/folders/11OHXiJxjOtqmN0yg_TeqUg8hJEU4nkbk"
-            }
-        },
-        12: {
-            "Science": {
-                "Physics": "https://drive.google.com/drive/folders/10QCZZ78wmLGERWwVoCnQysVOzizeervS", 
-                "Chemistry": "https://drive.google.com/drive/folders/10TlsfeqLn5PHarO3rclePp5bg6HBq4K4", 
-                "Math": "https://drive.google.com/drive/folders/10OfK1z06vhLqAhPnuYt4w7cN0rZDtbES", 
-                "Biology": "https://drive.google.com/drive/folders/10I1sPq0wvSMD8gNtaoFEFFvtQ3fZSDIF" 
-            },
-            "Commerce": {
-                "Business Studies": "https://drive.google.com/drive/folders/114ncGbXaaDS_Uq_jFZ6S8XvUPxGqUomy", 
-                "Accountancy": "https://drive.google.com/drive/folders/1133qJ8A91II5MwG9dJMeyQxgF88GEJe6", 
-                "Economics": "https://drive.google.com/drive/folders/10zTfWiTZEjnip9jQ4_NQ5D-iKdgC2I8z" 
-            },
-            "Arts": {
-                "History": "https://drive.google.com/drive/folders/11gfrxRKkwZg9yEREvyS06N6zNGH4QFRi", 
-                "Political Science": "https://drive.google.com/drive/folders/11c9BDCtzO6OjZumMYlXhklSfwJud5D9z", 
-                "Economics": "https://drive.google.com/drive/folders/11jMqr1owMcbXsVci7CgYbyyfWrb3zgtd", 
-                "Psychology": "https://drive.google.com/drive/folders/11Y7G9_79zt197nQFMYgKpsKcAb99Ge7c", 
-                "Geography": "https://drive.google.com/drive/folders/11XmaUWcoB2JPes05FONuxLtFbDIfSln0"
+        function showPage(page) {
+            document.getElementById(`${currentPage}Container`).style.display = 'none';
+            document.getElementById(`${page}Container`).style.display = 'block';
+            document.getElementById('backButton').style.display = (page !== 'class') ? 'block' : 'none';
+            currentPage = page;
+        }
+
+        function selectClass(cls) {
+            selectedClass = cls;
+            if (cls >= 11) {
+                showPage('stream');
+            } else {
+                loadSubjects();
             }
         }
-    };
 
-    function showPage(page) {
-        document.getElementById(`${currentPage}Container`).classList.add('hidden');
-        document.getElementById(`${page}Container`).classList.remove('hidden');
-        document.getElementById('backButton').style.display = (page !== 'login') ? 'block' : 'none';
-        currentPage = page;
-    }
-
-    function login() {
-        showPage('class');
-    }
-
-    function selectClass(cls) {
-        selectedClass = cls;
-        if (cls <= 10) {
-            loadSubjects(cls);
-        } else {
-            showPage('stream');
+        function selectStream(stream) {
+            selectedStream = stream;
+            loadSubjects();
         }
-    }
 
-    function selectStream(stream) {
-        selectedStream = stream;
-        loadSubjects(selectedClass);
-    }
+        function loadSubjects() {
+            const subjectsList = document.getElementById('subjectsList');
+            subjectsList.innerHTML = '';
 
-    function loadSubjects(cls) {
-        const subjectsList = document.getElementById('subjectsList');
-        subjectsList.innerHTML = '';
+            let subjects = [];
+            if (selectedClass <= 10) {
+                subjects = ["Math", "Science", "Social Science", "English", "Hindi"];
+            } else if (selectedStream === "Science") {
+                subjects = ["Physics", "Chemistry", "Math", "Biology"];
+            } else if (selectedStream === "Commerce") {
+                subjects = ["Business Studies", "Accountancy", "Economics"];
+            } else if (selectedStream === "Arts") {
+                subjects = ["History", "Political Science", "Economics", "Psychology", "Geography"];
+            }
 
-        if (cls <= 10) {
-            for (const [subject, link] of Object.entries(subjectLinks[cls])) {
+            subjects.forEach(subject => {
                 subjectsList.innerHTML += `
                     <div class="option">
                         ${subject}
-                        <button class="access-button" onclick="window.open('${link}', '_blank')">Access to Notes</button>
+                        <a href="#" class="access-button">Access to Notes</a>
                     </div>
                 `;
-            }
-        } else {
-            for (const [subject, link] of Object.entries(subjectLinks[cls][selectedStream])) {
-                subjectsList.innerHTML += `
-                    <div class="option">
-                        ${subject}
-                        <button class="access-button" onclick="window.open('${link}', '_blank')">Access to Notes</button>
-                    </div>
-                `;
-            }
-        }
-        showPage('subject');
-    }
+            });
 
-    function goBack() {
-        if (currentPage === 'subject') showPage(selectedClass > 10 ? 'stream' : 'class');
-        else if (currentPage === 'stream') showPage('class');
-        else if (currentPage === 'class') showPage('login');
-    }
-</script>
+            showPage('subject');
+        }
+
+        function goBack() {
+            if (currentPage === 'subject') showPage(selectedClass > 10 ? 'stream' : 'class');
+            else if (currentPage === 'stream') showPage('class');
+        }
+    </script>
 
 </body>
 </html>
