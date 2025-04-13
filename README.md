@@ -63,37 +63,7 @@
       color: #888;
       text-align: center;
       animation: fadeIn 1.5s ease-in;
-    }.floating-object {
-  position: absolute;
-  animation: float 6s ease-in-out infinite;
-}
-
-.floating-object img {
-  width: 60px;
-}
-
-.book {
-  top: 10%;
-  left: 15%;
-  animation-delay: 0s;
-}
-.pencil {
-  top: 20%;
-  left: 40%;
-  animation-delay: 2s;
-}
-.eraser {
-  top: 30%;
-  left: 70%;
-  animation-delay: 4s;
-}
-.sharpener {
-  top: 50%;
-  left: 50%;
-  animation-delay: 6s;
-}
-
-@keyframes fadeDown {
+    }@keyframes fadeDown {
   0% { opacity: 0; transform: translateY(-20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
@@ -119,17 +89,11 @@
   100% { transform: scale(1); }
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-30px); }
-  100% { transform: translateY(0); }
-}
-
   </style>
 </head>
 <body>
   <audio autoplay loop hidden>
-    <source src="https://www.bensound.com/bensound-music/bensound-ukulele.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/bensound-music/bensound-energy.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  <header>AcademeForge</header>
   <div class="tagline">Empowering Students, Building Futures</div>
@@ -148,16 +112,4 @@
   <footer>
     Made with love by AcademeForge Team
   </footer>
-  <div class="floating-object book">
-    <img src="https://cdn-icons-png.flaticon.com/512/149/149660.png" alt="Book">
-  </div>
-  <div class="floating-object pencil">
-    <img src="https://cdn-icons-png.flaticon.com/512/2956/2956975.png" alt="Pencil">
-  </div>
-  <div class="floating-object eraser">
-    <img src="https://cdn-icons-png.flaticon.com/512/3082/3082762.png" alt="Eraser">
-  </div>
-  <div class="floating-object sharpener">
-    <img src="https://cdn-icons-png.flaticon.com/512/2099/2099131.png" alt="Sharpener">
-  </div>
 </body>
