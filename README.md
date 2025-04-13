@@ -110,6 +110,6 @@
     <a class="button" href="https://academeforge.pages.dev/" target="_blank">Extra Study Material</a>
   </div>
   <footer>
-    Made with love by AcademeForge Team
+    Made with love ♥️ by AcademeForge Team
   </footer>
 </body>
