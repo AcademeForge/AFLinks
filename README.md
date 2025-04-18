@@ -92,7 +92,7 @@
 </head>
 <body>
   <audio autoplay loop hidden>
-    <source src="https://www.bensound.com/bensound-music/bensound-energy.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/royalty-free-music/track/inspire" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  <header>AcademeForge</header>
   <div class="tagline">Empowering Students, Building Futures</div>
