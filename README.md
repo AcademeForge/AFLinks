@@ -1,63 +1,96 @@
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AcademeForge | All You Need in One Place</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AcademeForge Links</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f7fa;
       margin: 0;
       padding: 0;
-      text-align: center;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #fce4ec);
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
     header {
-      background: #1e3a8a;
-      color: white;
-      padding: 40px 20px;
-    }
-    h1 {
-      margin: 0;
+      margin-top: 60px;
       font-size: 2.5rem;
+      font-weight: bold;
+      color: #4b0082;
+      text-align: center;
+      animation: fadeDown 1s ease-out;
     }
-    p {
-      margin: 10px 0 0;
+    .tagline {
+      margin-top: 10px;
       font-size: 1.2rem;
+      color: #555;
+      text-align: center;
+      animation: fadeUp 1.2s ease-out;
     }
-    .links {
-      margin: 40px auto;
+    .link-container {
+      margin-top: 40px;
+      width: 90%;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      width: 90%;
-      max-width: 500px;
+      animation: slideIn 1.3s ease-out;
     }
-    .link-btn {
-      background: #2563eb;
+    a.button {
+      text-align: center;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #6a5acd, #00bfff);
       color: white;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
       text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.3s;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
     }
-    .link-btn:hover {
-      background: #1d4ed8;
+    a.button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
     footer {
-      margin-top: 50px;
+      margin-top: auto;
+      padding: 20px;
       font-size: 0.9rem;
-      color: #666;
-    }
+      color: #888;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+    }@keyframes fadeDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(-100px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to AcademeForge</h1>
-    <p>Empowering India's Young Minds</p>
-  </header>
 
   <audio autoplay loop hidden>
     <source src="https://www.bensound.com/royalty-free-music/track/inspire" type="audio/mpeg">
