@@ -97,18 +97,18 @@
   </audio>  <header>AcademeForge</header>
   <div class="tagline">Empowering Students, Building Futures</div>
   <div class="link-container">
-    <a class="button" href="http://academeforge.wordpress.com" target="_blank">WordPress Blog</a>
-    <a class="button" href="https://www.youtube.com/@AcademeForgePro" target="_blank">YouTube Channel</a>
+    <a class="button" href="http://academeforge.wordpress.com" target="_blank">Academeforge Scholars Test</a>
+    <a class="button" href="https://academeforge.github.io/AST/" target="_blank">AST Registration Form</a>
+    <a class="button" href="https://www.youtube.com/@AcademeForgePro" target="_blank">YouTube</a>
     <a class="button" href="https://www.instagram.com/academeforgee" target="_blank">Instagram</a>
     <a class="button" href="https://x.com/AcademeForge?t=Q4TXzMVYC9BZDXGEICxQ5w&s=09" target="_blank">Twitter (X)</a>
     <a class="button" href="https://t.me/addlist/CVX57k_dpG4wNGJl" target="_blank">All Telegram Groups/Channels</a>
     <a class="button" href="https://t.me/+DYChuLLgL-83MThl" target="_blank">Main Telegram Chat Group</a>
-    <a class="button" href="https://academeforge.github.io/AcademeForge/" target="_blank">Notes Website</a>
-    <a class="button" href="https://academeforge.github.io/TimeTable/" target="_blank">Time Tables Website</a>
-    <a class="button" href="https://academeforge.github.io/AST/" target="_blank">AST Registration Form</a>
+    <a class="button" href="https://academeforge.github.io/AcademeForge/" target="_blank">Notes Website Class 9 to 12</a>
+    <a class="button" href="https://academeforge.github.io/TimeTable/" target="_blank">Time Tables</a>
     <a class="button" href="https://academeforge.pages.dev/" target="_blank">Extra Study Material</a>
   </div>
   <footer>
-    Made with love ♥️ by AcademeForge Team
+    Made with love ♥️ by Team AcademeForge
   </footer>
 </body>
