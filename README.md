@@ -96,7 +96,7 @@
     <source src="https://www.bensound.com/royalty-free-music/track/inspire" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  <header>AcademeForge</header>
-  <div class="tagline">Empowering Students, Building Futures</div>
+  <div class="tagline">Something Out Of The Box 🎁!</div>
   <div class="link-container">
     <a class="button" href="http://academeforge.wordpress.com" target="_blank">Academeforge Scholars Test</a>
     <a class="button" href="https://academeforge.github.io/AST/" target="_blank">AST Registration Form</a>
