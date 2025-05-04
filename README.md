@@ -140,8 +140,8 @@
   <!-- Sky and clouds -->
   <div class="sky">
     <div class="cloud" style="left: 10%;"></div>
-    <div class="cloud" style="left: 40%; animation-delay: 5s;"></div>
-    <div class="cloud" style="left: 70%; animation-delay: 10s;"></div>
+    <div class="cloud" style="left: 30%; animation-delay: 5s;"></div>
+    <div class="cloud" style="left: 60%; animation-delay: 10s;"></div>
   </div>
 
   <!-- Lightning flash overlay -->
