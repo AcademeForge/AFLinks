@@ -1,174 +1,185 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcademeForge</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-color: #0e0e0e;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: #fff;
-        }
-        
-        .logo {
-            width: 200px;
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AcademeForge Links</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-        .button-container {
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin-top: 50px;
-        }
+    header {
+      padding: 20px 0;
+      animation: fadeInDown 2s ease;
+    }
 
-        .access-button {
-            background-color: #00e5ff;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 25px #00e5ff;
+      animation: glow 2s infinite alternate;
+    }
 
-        .access-button:hover {
-            background-color: #ff4081;
-            transform: scale(1.1);
-        }
+    h1 {
+      margin: 0 auto 40px;
+      font-size: 2.5rem;
+      color: #ff4081;
+    }
 
-        /* Lightning Animation */
-        .lightning {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(transparent, transparent 50%, #fff 50%, transparent);
-            background-size: 100% 20px;
-            animation: lightningAnimation 1.5s infinite;
-            z-index: 5;
-            pointer-events: none;
-        }
+    .link-button {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      background: #292929;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+      animation: floatIn 2s ease forwards;
+    }
 
-        @keyframes lightningAnimation {
-            0%, 100% {
-                background-position: 0 0;
-            }
-            50% {
-                background-position: 0 100%;
-            }
-        }
+    .link-button:hover {
+      background: #00e5ff;
+      color: black;
+      transform: scale(1.05);
+    }
 
-        /* Cloud Animation */
-        .clouds {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://cdn.pixabay.com/photo/2017/08/30/01/57/clouds-2695564_960_720.jpg') repeat-x;
-            animation: cloudAnimation 15s linear infinite;
-            z-index: 2;
-        }
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: #111;
+      z-index: 0;
+      overflow: hidden;
+    }
 
-        @keyframes cloudAnimation {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
+    .cloud {
+      width: 200px;
+      height: 60px;
+      background: #ccc;
+      border-radius: 100px;
+      position: absolute;
+      top: 40px;
+      animation: moveClouds 10s linear infinite;
+      opacity: 0.3;
+    }
 
-        /* Dancing Character */
-        .dancing-character {
-            position: absolute;
-            bottom: 10px;
-            width: 120px;
-            animation: danceAnimation 2s ease-in-out infinite;
-        }
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: #ccc;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      top: -30px;
+    }
 
-        @keyframes danceAnimation {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
+    .cloud::before {
+      left: 10px;
+    }
 
-        /* Top Banner */
-        .banner-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ffcc00;
-            color: black;
-            text-align: center;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 10px 0;
-            z-index: 999;
-        }
+    .cloud::after {
+      right: 10px;
+    }
 
-    </style>
+    .lightning {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes moveClouds {
+      0% { left: -250px; }
+      100% { left: 100%; }
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 0; }
+      10% { opacity: 0.8; }
+      20% { opacity: 0; }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatIn {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px #00e5ff; }
+      100% { box-shadow: 0 0 35px #00e5ff, 0 0 10px #00bcd4 inset; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Banner at the top -->
-    <div class="banner-container">
-        Stay Tuned For more updates. <a href="https://t.me/AcademeForge" target="_blank" style="color: #ff4081; text-decoration: underline;">Join our Telegram group</a>
-    </div>
+  <!-- Sky and clouds -->
+  <div class="sky">
+    <div class="cloud" style="left: 10%;"></div>
+    <div class="cloud" style="left: 40%; animation-delay: 5s;"></div>
+    <div class="cloud" style="left: 70%; animation-delay: 10s;"></div>
+  </div>
 
-    <!-- Lightning Animation -->
-    <div class="lightning"></div>
+  <!-- Lightning flash overlay -->
+  <div class="lightning" id="lightning"></div>
 
-    <!-- Clouds Moving -->
-    <div class="clouds"></div>
+  <!-- Logo + Heading -->
+  <header>
+    <img src="https://i.imgur.com/Ofy9fTP.png" alt="AcademeForge Logo" class="logo"/>
+    <h1>Follow AcademeForge</h1>
+  </header>
 
-    <!-- AcademeForge Logo -->
-    <img class="logo" src="https://ibb.co/23qH49sJ" alt="AcademeForge Logo">
+  <!-- Link Buttons -->
+  <a href="https://t.me/AcademeForge" class="link-button" target="_blank">Telegram</a>
+  <a href="https://x.com/AcademeForge?t=Q4TXzMVYC9BZDXGEICxQ5w&s=09" class="link-button" target="_blank">Twitter</a>
+  <a href="https://www.youtube.com/@AcademeForgePro" class="link-button" target="_blank">YouTube</a>
+  <a href="https://www.instagram.com/academeforgee" class="link-button" target="_blank">Instagram</a>
 
-    <!-- Button Section -->
-    <div class="button-container">
-        <a href="https://t.me/AcademeForge" target="_blank"><button class="access-button">Join Telegram</button></a>
-        <a href="https://x.com/AcademeForge?t=Q4TXzMVYC9BZDXGEICxQ5w&s=09" target="_blank"><button class="access-button">Follow on X</button></a>
-        <a href="https://www.youtube.com/@AcademeForgePro" target="_blank"><button class="access-button">Subscribe on YouTube</button></a>
-        <a href="https://www.instagram.com/academeforgee" target="_blank"><button class="access-button">Follow on Instagram</button></a>
-    </div>
+  <!-- Audio Element -->
+  <audio id="thunder-sound" src="https://www.soundjay.com/nature/thunder-1.mp3" preload="auto"></audio>
 
-    <!-- Dancing Cartoon Character -->
-    <div class="dancing-character">
-        <img src="https://i.ibb.co/k2KvC79Z/IMG-20250320-164334-559.jpg" alt="Dancing Character">
-    </div>
+  <!-- Lightning & Thunder Script -->
+  <script>
+    const lightning = document.getElementById('lightning');
+    const thunder = document.getElementById('thunder-sound');
 
-    <!-- Audio for Lightning Sound -->
-    <audio id="lightning-sound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+    function triggerLightning() {
+      lightning.style.animation = 'flash 1s ease';
+      thunder.currentTime = 0;
+      thunder.play();
+      setTimeout(() => {
+        lightning.style.animation = 'none';
+      }, 1000);
+    }
 
-    <script>
-        const lightningSound = document.getElementById('lightning-sound');
-
-        // Play the lightning sound every time the lightning animation is triggered
-        setInterval(() => {
-            lightningSound.play();
-        }, 1500); // Play sound every 1.5 seconds (matching the lightning animation)
-    </script>
+    setInterval(() => {
+      triggerLightning();
+    }, 1500); // Lightning happens every 1.5 seconds
+  </script>
 
 </body>
 </html>
