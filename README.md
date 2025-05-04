@@ -149,7 +149,7 @@
 
   <!-- Logo + Heading -->
   <header>
-    <img src="https://i.imgur.com/Ofy9fTP.png" alt="AcademeForge Logo" class="logo"/>
+    <img src="https://ibb.co/23qH49sJ" alt="AcademeForge Logo" class="logo"/>
     <h1>Follow AcademeForge</h1>
   </header>
 
