@@ -56,7 +56,7 @@
             height: 100%;
             background-image: linear-gradient(transparent, transparent 50%, #fff 50%, transparent);
             background-size: 100% 20px;
-            animation: lightningAnimation 1.5s infinite;
+            animation: lightningAnimation 5s infinite;
             z-index: 5;
             pointer-events: none;
         }
@@ -130,11 +130,7 @@
 </head>
 <body>
 
-    <!-- Banner at the top -->
-    <div class="banner-container">
-        Stay Tuned For more updates <a href="https://t.me/AcademeForge" target="_blank" style="color: #ff4081; text-decoration: underline;">Join our Telegram group</a>
-    </div>
-
+   
     <!-- Lightning animation -->
     <div class="lightning"></div>
 
@@ -156,6 +152,18 @@
     <div class="dancing-character">
         <img src="https://i.ibb.co/k2KvC79Z/IMG-20250320-164334-559.jpg" alt="Dancing Character">
     </div>
+
+    <!-- Audio for Lightning Sound -->
+    <audio id="lightning-sound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+    <script>
+        const lightningSound = document.getElementById('lightning-sound');
+        
+        // Play the lightning sound every time the lightning animation is triggered
+        setInterval(() => {
+            lightningSound.play();
+        }, 1500); // Play sound every 1.5 seconds (matching the lightning animation)
+    </script>
 
 </body>
 </html>
