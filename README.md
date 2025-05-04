@@ -1,116 +1,187 @@
+
+<html lang="en">
 <head>
-<meta name="google-site-verification" content="F1L0xfSoJ09Jp0SjvlmTnzkWK_fuYyhBw36QvRdDGwM" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AcademeForge Links</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #e0f7fa, #fce4ec);
-      color: #222;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
       overflow-x: hidden;
     }
+
     header {
-      margin-top: 60px;
+      padding: 20px 0 0;
+      animation: fadeInDown 2s ease;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 25px #00e5ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    h1 {
+      margin: 0 auto 40px;
       font-size: 2.5rem;
-      font-weight: bold;
-      color: #4b0082;
-      text-align: center;
-      animation: fadeDown 1s ease-out;
+      color: #ff4081;
     }
-    .tagline {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #555;
-      text-align: center;
-      animation: fadeUp 1.2s ease-out;
-    }
-    .link-container {
-      margin-top: 40px;
-      width: 90%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      animation: slideIn 1.3s ease-out;
-    }
-    a.button {
-      text-align: center;
-      padding: 14px 20px;
-      background: linear-gradient(135deg, #6a5acd, #00bfff);
+
+    .link-button {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      background: #292929;
+      border: none;
+      border-radius: 8px;
       color: white;
+      font-size: 18px;
       text-decoration: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      animation: pulse 2s infinite;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+      animation: floatIn 2s ease forwards;
     }
-    a.button:hover {
+
+    .link-button:hover {
+      background: #00e5ff;
+      color: black;
       transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
-    footer {
-      margin-top: auto;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #888;
-      text-align: center;
-      animation: fadeIn 1.5s ease-in;
-    }@keyframes fadeDown {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
 
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: #111;
+      z-index: 0;
+      overflow: hidden;
+    }
 
-@keyframes slideIn {
-  0% { opacity: 0; transform: translateX(-100px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
+    .cloud {
+      width: 200px;
+      height: 60px;
+      background: #ccc;
+      border-radius: 100px;
+      position: absolute;
+      top: 40px;
+      animation: moveClouds 40s linear infinite;
+      opacity: 0.3;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: #ccc;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      top: -30px;
+    }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
+    .cloud::before {
+      left: 10px;
+    }
 
+    .cloud::after {
+      right: 10px;
+    }
+
+    .lightning {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes moveClouds {
+      0% { left: -250px; }
+      100% { left: 100%; }
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 0; }
+      10% { opacity: 0.8; }
+      20% { opacity: 0; }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatIn {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px #00e5ff; }
+      100% { box-shadow: 0 0 35px #00e5ff, 0 0 10px #00bcd4 inset; }
+    }
   </style>
 </head>
 <body>
 
-  <audio autoplay loop hidden>
-    <source src="https://www.bensound.com/royalty-free-music/track/inspire" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>  <header>AcademeForge</header>
-  <div class="tagline">Something Out Of The Box 🎁!</div>
-  <div class="link-container">
-    <a class="button" href="http://academeforge.wordpress.com" target="_blank">Academeforge Scholars Test</a>
-    <a class="button" href="https://academeforge.github.io/AST/" target="_blank">AST Registration Form</a>
-    <a class="button" href="https://www.youtube.com/@AcademeForgePro" target="_blank">YouTube</a>
-    <a class="button" href="https://www.instagram.com/academeforgee" target="_blank">Instagram</a>
-    <a class="button" href="https://x.com/AcademeForge?t=Q4TXzMVYC9BZDXGEICxQ5w&s=09" target="_blank">Twitter (X)</a>
-    <a class="button" href="https://t.me/addlist/CVX57k_dpG4wNGJl" target="_blank">All Telegram Groups/Channels</a>
-    <a class="button" href="https://t.me/+DYChuLLgL-83MThl" target="_blank">Main Telegram Chat Group</a>
-    <a class="button" href="https://academeforge.github.io/AcademeForge/" target="_blank">Notes Website Class 9 to 12</a>
-    <a class="button" href="https://academeforge.github.io/TimeTable/" target="_blank">Time Tables</a>
-    <a class="button" href="https://academeforge.pages.dev/" target="_blank">Extra Study Material</a>
+  <!-- Sky and clouds -->
+  <div class="sky">
+    <div class="cloud" style="left: 10%;"></div>
+    <div class="cloud" style="left: 40%; animation-delay: 10s;"></div>
+    <div class="cloud" style="left: 70%; animation-delay: 20s;"></div>
   </div>
-  <footer>
-    Made with love ♥️ by Team AcademeForge
-  </footer>
+
+  <!-- Lightning flash overlay -->
+  <div class="lightning" id="lightning"></div>
+
+  <!-- Logo + Heading -->
+  <header>
+    <img src="https://i.imgur.com/Ofy9fTP.png" alt="AcademeForge Logo" class="logo"/>
+    <h1>Follow AcademeForge</h1>
+  </header>
+
+  <!-- Link Buttons -->
+  <a href="https://t.me/AcademeForge" class="link-button" target="_blank">Telegram</a>
+  <a href="https://x.com/AcademeForge?t=Q4TXzMVYC9BZDXGEICxQ5w&s=09" class="link-button" target="_blank">Twitter</a>
+  <a href="https://www.youtube.com/@AcademeForgePro" class="link-button" target="_blank">YouTube</a>
+  <a href="https://www.instagram.com/academeforgee" class="link-button" target="_blank">Instagram</a>
+
+  <!-- Audio Element -->
+  <audio id="thunder-sound" src="https://www.soundjay.com/nature/thunder-1.mp3" preload="auto"></audio>
+
+  <!-- Lightning & Thunder Script -->
+  <script>
+    const lightning = document.getElementById('lightning');
+    const thunder = document.getElementById('thunder-sound');
+
+    function triggerLightning() {
+      lightning.style.animation = 'flash 1s ease';
+      thunder.currentTime = 0;
+      thunder.play();
+      setTimeout(() => {
+        lightning.style.animation = 'none';
+      }, 1000);
+    }
+
+    setInterval(() => {
+      if (Math.random() > 0.6) {
+        triggerLightning();
+      }
+    }, 4000);
+  </script>
+
 </body>
+</html>
