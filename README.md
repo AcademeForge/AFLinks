@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,15 +16,6 @@
     header {
       padding: 20px 0;
       animation: fadeInDown 2s ease;
-    }
-
-    .logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      box-shadow: 0 0 25px #00e5ff;
-      animation: glow 2s infinite alternate;
     }
 
     h1 {
@@ -73,7 +63,7 @@
       border-radius: 100px;
       position: absolute;
       top: 40px;
-      animation: moveClouds 10s linear infinite;
+      animation: moveClouds 5s linear infinite;
       opacity: 0.3;
     }
 
@@ -128,11 +118,6 @@
       0% { transform: translateY(30px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
     }
-
-    @keyframes glow {
-      0% { box-shadow: 0 0 15px #00e5ff; }
-      100% { box-shadow: 0 0 35px #00e5ff, 0 0 10px #00bcd4 inset; }
-    }
   </style>
 </head>
 <body>
@@ -140,16 +125,15 @@
   <!-- Sky and clouds -->
   <div class="sky">
     <div class="cloud" style="left: 10%;"></div>
-    <div class="cloud" style="left: 30%; animation-delay: 5s;"></div>
-    <div class="cloud" style="left: 60%; animation-delay: 10s;"></div>
+    <div class="cloud" style="left: 30%; animation-delay: 1s;"></div>
+    <div class="cloud" style="left: 60%; animation-delay: 2s;"></div>
   </div>
 
   <!-- Lightning flash overlay -->
   <div class="lightning" id="lightning"></div>
 
-  <!-- Logo + Heading -->
+  <!-- Heading -->
   <header>
-    <a href="https://ibb.co/23qH49sJ"><img src="https://i.ibb.co/k2KvC79Z/IMG-20250320-164334-559.jpg" alt="IMG-20250320-164334-559" border="0" /></a>
     <h1>Follow AcademeForge</h1>
   </header>
 
@@ -159,19 +143,8 @@
   <a href="https://www.youtube.com/@AcademeForgePro" class="link-button" target="_blank">YouTube</a>
   <a href="https://www.instagram.com/academeforgee" class="link-button" target="_blank">Instagram</a>
 
-  <!-- Audio Element -->
-  <audio id="thunder-sound" src="<!-- Free website background music player from www.soundimage.eu START //-->
-<script id="player_type" language="javascript" type="text/javascript"> 
-var player_id=1; 
-var soundimage_player_start = 1; 
-document.write('<div id="soundimage_holder'+player_id+'" align="center">');
-document.write('<div id="soundimage_player_main'+player_id+'"></div>'); 
-document.write('<a id="soundimage_player_links'+player_id+'" href="http://www.soundimage.eu/" target="_blank" title="Royalty Free Music">Royalty Free Music</a>');
-</script> 
-<script id="player_script" src="http://www.soundimage.pl/freemusic/soundimage_player_en2.js" language="javascript" type="text/javascript"></script> 
-</div>
-<!-- Free website background music player from www.soundimage.eu END //-->
-" preload="auto"></audio>
+  <!-- Thunder Sound -->
+  <audio id="thunder-sound" src="thunder.mp3" preload="auto"></audio>
 
   <!-- Lightning & Thunder Script -->
   <script>
@@ -187,9 +160,7 @@ document.write('<a id="soundimage_player_links'+player_id+'" href="http://www.so
       }, 1000);
     }
 
-    setInterval(() => {
-      triggerLightning();
-    }, 1500); // Lightning happens every 1.5 seconds
+    setInterval(triggerLightning, 1500);
   </script>
 
 </body>
