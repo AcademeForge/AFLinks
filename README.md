@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="F1L0xfSoJ09Jp0SjvlmTnzkWK_fuYyhBw36QvRdDGwM">
     <title>AcademeForge</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-color: #121212;
-            font-family: Arial, sans-serif;
+            background-color: #0e0e0e;
+            font-family: 'Arial', sans-serif;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            color: #fff;
         }
         
         .logo {
-            width: 150px;
+            width: 200px;
             margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .button-container {
-            position: relative;
-            text-align: center;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
         }
 
         .access-button {
@@ -35,16 +39,16 @@
             color: white;
             padding: 15px 30px;
             border: none;
-            border-radius: 8px;
-            font-size: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            margin: 10px;
-            transition: background-color 0.3s ease;
-            z-index: 10;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .access-button:hover {
             background-color: #ff4081;
+            transform: scale(1.1);
         }
 
         /* Lightning Animation */
@@ -56,7 +60,7 @@
             height: 100%;
             background-image: linear-gradient(transparent, transparent 50%, #fff 50%, transparent);
             background-size: 100% 20px;
-            animation: lightningAnimation 5s infinite;
+            animation: lightningAnimation 1.5s infinite;
             z-index: 5;
             pointer-events: none;
         }
@@ -73,12 +77,12 @@
         /* Cloud Animation */
         .clouds {
             position: absolute;
-            top: -20%;
-            left: -100%;
-            width: 100vw;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
             background: url('https://cdn.pixabay.com/photo/2017/08/30/01/57/clouds-2695564_960_720.jpg') repeat-x;
-            animation: cloudAnimation 10s linear infinite;
+            animation: cloudAnimation 15s linear infinite;
             z-index: 2;
         }
 
@@ -94,23 +98,23 @@
         /* Dancing Character */
         .dancing-character {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: danceAnimation 2s infinite;
+            bottom: 10px;
+            width: 120px;
+            animation: danceAnimation 2s ease-in-out infinite;
         }
 
         @keyframes danceAnimation {
             0%, 100% {
-                transform: translateX(-50%) rotate(0deg);
+                transform: translateY(0);
             }
             50% {
-                transform: translateX(-50%) rotate(15deg);
+                transform: translateY(-20px);
             }
         }
 
+        /* Top Banner */
         .banner-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -118,23 +122,24 @@
             color: black;
             text-align: center;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             padding: 10px 0;
             z-index: 999;
         }
 
-        .dancing-character img {
-            width: 100px;
-        }
     </style>
 </head>
 <body>
 
-   
-    <!-- Lightning animation -->
+    <!-- Banner at the top -->
+    <div class="banner-container">
+        Stay Tuned For more updates. <a href="https://t.me/AcademeForge" target="_blank" style="color: #ff4081; text-decoration: underline;">Join our Telegram group</a>
+    </div>
+
+    <!-- Lightning Animation -->
     <div class="lightning"></div>
 
-    <!-- Clouds moving fast -->
+    <!-- Clouds Moving -->
     <div class="clouds"></div>
 
     <!-- AcademeForge Logo -->
@@ -158,7 +163,7 @@
 
     <script>
         const lightningSound = document.getElementById('lightning-sound');
-        
+
         // Play the lightning sound every time the lightning animation is triggered
         setInterval(() => {
             lightningSound.play();
