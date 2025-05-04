@@ -160,7 +160,18 @@
   <a href="https://www.instagram.com/academeforgee" class="link-button" target="_blank">Instagram</a>
 
   <!-- Audio Element -->
-  <audio id="thunder-sound" src="https://www.soundjay.com/nature/thunder-1.mp3" preload="auto"></audio>
+  <audio id="thunder-sound" src="<!-- Free website background music player from www.soundimage.eu START //-->
+<script id="player_type" language="javascript" type="text/javascript"> 
+var player_id=1; 
+var soundimage_player_start = 1; 
+document.write('<div id="soundimage_holder'+player_id+'" align="center">');
+document.write('<div id="soundimage_player_main'+player_id+'"></div>'); 
+document.write('<a id="soundimage_player_links'+player_id+'" href="http://www.soundimage.eu/" target="_blank" title="Royalty Free Music">Royalty Free Music</a>');
+</script> 
+<script id="player_script" src="http://www.soundimage.pl/freemusic/soundimage_player_en2.js" language="javascript" type="text/javascript"></script> 
+</div>
+<!-- Free website background music player from www.soundimage.eu END //-->
+" preload="auto"></audio>
 
   <!-- Lightning & Thunder Script -->
   <script>
