@@ -142,6 +142,9 @@
   <a href="https://x.com/AcademeForge?t=Q4TXzMVYC9BZDXGEICxQ5w&s=09" class="link-button" target="_blank">Twitter</a>
   <a href="https://www.youtube.com/@AcademeForgePro" class="link-button" target="_blank">YouTube</a>
   <a href="https://www.instagram.com/academeforgee" class="link-button" target="_blank">Instagram</a>
+<a href="https://academeforge.github.io/AcademeForge/" class="link-button" target="_blank">Official Website</a>
+<a href="http://academeforge.wordpress.com/" class="link-button" target="_blank">About AST</a>
+
 
   <!-- Thunder Sound -->
   <audio id="thunder-sound" src="thunder.mp3" preload="auto"></audio>
